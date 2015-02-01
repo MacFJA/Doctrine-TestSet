@@ -1,0 +1,16 @@
+{
+    "name": "macfja/doctrine-testset",
+    "description": "A complete test set for testing doctrine type and relation",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "MacFJA"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "2.5.x-dev"
+    },
+    "autoload": {
+        "psr4": {"\\MacFJA\\DoctrineTestSet\\": ""}
+    }
+}

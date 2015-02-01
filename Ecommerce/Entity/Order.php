@@ -228,4 +228,12 @@ class Order {
         $uid = date('YmdHi');
         return sprintf('%d%O13d', $storeId, $uid);
     }
+
+    /** {@inheritdoc} */
+    function __toString()
+    {
+        return 'Order #'.$this->getIncrementId();
+    }
+
+
 }

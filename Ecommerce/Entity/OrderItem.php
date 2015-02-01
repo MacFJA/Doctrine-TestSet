@@ -43,7 +43,7 @@ class OrderItem {
     protected $product;
 
     /**
-     * @param mixed $product
+     * @param Product $product
      */
     public function setProduct($product)
     {
@@ -51,7 +51,7 @@ class OrderItem {
     }
 
     /**
-     * @return mixed
+     * @return Product
      */
     public function getProduct()
     {
@@ -96,5 +96,19 @@ class OrderItem {
     public function getId()
     {
         return $this->id;
+    }
+
+    /** {@inheritdoc} */
+    function __toString()
+    {
+        return $this->getProduct()->getName().' [x'.$this->getQuantity().']: '.$this->getTotalPrice();
+    }
+
+    /**
+     * Return the total price (tax included)
+     * @return float
+     */
+    public function getTotalPrice() {
+        return $this->product->getPrice() * $this->quantity * (1 + $this->taxRate);
     }
 }

@@ -330,7 +330,7 @@ class Product {
     }
 
     /**
-     * {@inherited}
+     * {@inheritdoc}
      */
     function __toString()
     {

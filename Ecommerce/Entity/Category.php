@@ -133,4 +133,12 @@ class Category {
         $this->products->clear();
         $this->products = new ArrayCollection($products);
     }
+
+    /** {@inheritdoc} */
+    function __toString()
+    {
+        return $this->getName();
+    }
+
+
 }

@@ -67,4 +67,11 @@ class Shipment {
         return $this->transporter;
     }
 
+    /** {@inheritdoc} */
+    function __toString()
+    {
+        return $this->getTransporter().': '.$this->getCost();
+    }
+
+
 }

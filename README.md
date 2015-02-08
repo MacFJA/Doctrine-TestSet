@@ -30,4 +30,4 @@ Ecommerce contains:
     - OneToOne (unidirectional)
     - ManyToOne (unidirectional)
     - OneToMany (unidirectional)
-    - OneToOne (self-referencing)
+    - OneToMany (self-referencing)

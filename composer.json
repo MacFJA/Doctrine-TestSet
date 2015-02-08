@@ -8,9 +8,10 @@
         }
     ],
     "require": {
-        "doctrine/orm": "2.5.x-dev"
+        "doctrine/orm": "2.5.x-dev",
+        "symfony/yaml": "v2.6.4"
     },
     "autoload": {
-        "psr4": {"\\MacFJA\\DoctrineTestSet\\": ""}
+        "psr-4": {"MacFJA\\DoctrineTestSet\\": ""}
     }
 }

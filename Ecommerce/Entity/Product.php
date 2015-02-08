@@ -95,7 +95,7 @@ class Product {
     /**
      * The image of the product
      * @var Image
-     * @ORM\OneToOne(targetEntity="Image")
+     * @ORM\OneToOne(targetEntity="Image",cascade={"persist"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $image;

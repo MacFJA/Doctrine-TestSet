@@ -1,12 +1,14 @@
 <?php
+
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Setup;
+use MacFJA\DoctrineTestSet\Ecommerce\FixtureLoader;
 
-// replace with mechanism to retrieve EntityManager in your app
+$loader = require_once(__DIR__.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php');
+
 $paths = array(realpath(__DIR__.'/Ecommerce/Entity/'));
 
 $cache = new ArrayCache();
@@ -21,10 +23,11 @@ $config->setMetadataDriverImpl( $driver );
 
 $conn = array(
     'driver' => 'pdo_sqlite',
-    'path' => __DIR__.DIRECTORY_SEPARATOR.'ecommerce.sqlite'
+    'path' => __DIR__.DIRECTORY_SEPARATOR.'ecommerce.sqlite',
 );
 
 $entityManager = EntityManager::create($conn, $config);
 
-
-return ConsoleRunner::createHelperSet($entityManager);
+$fixtureLoader = new FixtureLoader();
+$fixtureLoader->setEntityManager($entityManager);
+$fixtureLoader->injectData();

@@ -35,12 +35,19 @@ class Category {
      **/
     protected $products;
     /**
+     * All children categories
+     * @var Category[]
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     **/
+    private $children;
+
+    /**
      * The category parent
      * @var Category
-     * @ORM\OneToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      **/
-    protected $parent;
+    private $parent;
 
     /**
      * Constructor of the Category class.
@@ -48,8 +55,10 @@ class Category {
      */
     function __construct()
     {
-        //Initialize product as a Doctrine Collection
+        //Initialize products as a Doctrine Collection
         $this->products = new ArrayCollection();
+        //Initialize children as a Doctrine Collection
+        $this->children = new ArrayCollection();
     }
 
     /**
@@ -104,6 +113,15 @@ class Category {
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Get all children categories
+     * @return Category[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 
     /**

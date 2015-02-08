@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "383f34e70640b933f229c932b0039edb",
+    "hash": "30a4bd8c18e1dab4f157774c08c8b6fc",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -80,12 +80,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "dbeacc7bf5bcec39f7e02aa751adac2cb1ff256a"
+                "reference": "15334410a781da60f861df536b460f24c8f01eeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/dbeacc7bf5bcec39f7e02aa751adac2cb1ff256a",
-                "reference": "dbeacc7bf5bcec39f7e02aa751adac2cb1ff256a",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/15334410a781da60f861df536b460f24c8f01eeb",
+                "reference": "15334410a781da60f861df536b460f24c8f01eeb",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-01-17 21:05:51"
+            "time": "2015-02-01 04:40:53"
         },
         {
             "name": "doctrine/collections",
@@ -289,12 +289,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c6eaae53e1bf4adab38668eadb098fc1ad8a6c31"
+                "reference": "42440c330deed595f773fd8e70eee519c7d5dbbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c6eaae53e1bf4adab38668eadb098fc1ad8a6c31",
-                "reference": "c6eaae53e1bf4adab38668eadb098fc1ad8a6c31",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/42440c330deed595f773fd8e70eee519c7d5dbbe",
+                "reference": "42440c330deed595f773fd8e70eee519c7d5dbbe",
                 "shasum": ""
             },
             "require": {
@@ -352,7 +352,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2015-01-28 22:19:36"
+            "time": "2015-01-30 11:30:31"
         },
         {
             "name": "doctrine/inflector",
@@ -535,12 +535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "64ef89ce4cfe2b41c3f7225471cf450fa8e28bbf"
+                "reference": "4c68a38bd6b7d590dbfa90b2bb116129381935ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/64ef89ce4cfe2b41c3f7225471cf450fa8e28bbf",
-                "reference": "64ef89ce4cfe2b41c3f7225471cf450fa8e28bbf",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/4c68a38bd6b7d590dbfa90b2bb116129381935ce",
+                "reference": "4c68a38bd6b7d590dbfa90b2bb116129381935ce",
                 "shasum": ""
             },
             "require": {
@@ -604,7 +604,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-01-29 03:11:49"
+            "time": "2015-02-04 21:42:55"
         },
         {
             "name": "symfony/console",
@@ -613,12 +613,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "9f041fb5735b0d25d117e77ab8597a8376c74fbd"
+                "reference": "e30a2778069b48bd1e560e4a2815d15c9ab2f563"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/9f041fb5735b0d25d117e77ab8597a8376c74fbd",
-                "reference": "9f041fb5735b0d25d117e77ab8597a8376c74fbd",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/e30a2778069b48bd1e560e4a2815d15c9ab2f563",
+                "reference": "e30a2778069b48bd1e560e4a2815d15c9ab2f563",
                 "shasum": ""
             },
             "require": {
@@ -661,7 +661,54 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-25 05:59:26"
+            "time": "2015-02-05 07:11:58"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.6.4",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/60ed7751671113cf1ee7d7778e691642c2e9acd8",
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2015-01-25 04:39:26"
         }
     ],
     "packages-dev": [],

@@ -158,5 +158,17 @@ class Category {
         return $this->getName();
     }
 
+    /**
+     * Get a textual breadcrumb of the category
+     * @param string $separator
+     * @return string
+     */
+    function getBreadcrumb($separator=' / ') {
+        if(is_null($this->parent)) {
+            return $this->getName();
+        } else {
+            return $this->parent->getBreadcrumb($separator). $separator . $this->getName();
+        }
+    }
 
 }

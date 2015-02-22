@@ -6,6 +6,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use MacFJA\DoctrineTestSet\Ecommerce\Entity\Category;
 use MacFJA\DoctrineTestSet\Ecommerce\Entity\Image;
 use MacFJA\DoctrineTestSet\Ecommerce\Entity\Product;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 
 class FixtureLoader {
@@ -29,8 +31,9 @@ class FixtureLoader {
         //Start with categories
         $this->injectCategoriesData($data['MacFJA\DoctrineTestSet\Ecommerce\Entity\Category']);
 
-        //Next product info
+        //Next product info with image
         $this->injectProductsData($data['MacFJA\DoctrineTestSet\Ecommerce\Entity\Product']);
+        $this->clearTumbnails();
 
         $this->manager->flush();
     }
@@ -119,5 +122,20 @@ class FixtureLoader {
         imagecopyresized($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
         return $thumb;
+    }
+
+    protected function clearTumbnails() {
+        $finder = new Finder();
+        $finder->in(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'thumbnails');
+        foreach($finder->ignoreDotFiles(false)->files() as $file) {
+            /** @var $file SplFileInfo */
+                unlink($file->getRealPath());
+        }
+        foreach($finder->sort(function($a,$b){return strlen($b->getRealPath())-strlen($a->getRealPath());})->directories() as $file) {
+            /** @var $file SplFileInfo */
+                rmdir($file->getRealPath());
+
+        }
+        rmdir(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'thumbnails');
     }
 }

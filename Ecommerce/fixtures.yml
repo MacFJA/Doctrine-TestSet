@@ -770,7 +770,7 @@ MacFJA\DoctrineTestSet\Ecommerce\Entity\Product:
     id: 119
     ean: 0173290455876
     price: 15.0000
-    description: "Comfortable preshrunk shirts.  Highest Quality Printing.<br><br>\r\n<ul>\r\n<ul class=\"disc\">\r\n<li>6.1 oz. 100% preshrunk heavyweight cotton<br></li>\r\n<li>Shoulder-to-shoulder taping<br></li>\r\n<li>Double-needle sleeves and bottom hem<br></li>"
+    description: "Comfortable preshrunk shirts.  Highest Quality Printing.<br><br>\r\n\r\n<ul class=\"disc\">\r\n<li>6.1 oz. 100% preshrunk heavyweight cotton<br></li>\r\n<li>Shoulder-to-shoulder taping<br></li>\r\n<li>Double-needle sleeves and bottom hem<br></li></ul>"
     createdAt: "2007-08-29 15:00:05"
     name: "Coalesce: Functioning On Impatience T-Shirt"
     image: "/c/o/coalesce-functioning-on-impatience-t-shirt-1.jpg"
@@ -806,7 +806,7 @@ MacFJA\DoctrineTestSet\Ecommerce\Entity\Product:
     id: 123
     ean: 1128681489387
     price: 100.0000
-    description: "<ul>\r\n<ul class=\"disc\">\r\n<li>6.1 oz. 100% preshrunk heavyweight cotton <br></li>\r\n<li>Double-needle sleeves and bottom hem</li>\r\n</ul>"
+    description: "\r\n<ul class=\"disc\">\r\n<li>6.1 oz. 100% preshrunk heavyweight cotton <br></li>\r\n<li>Double-needle sleeves and bottom hem</li>\r\n</ul>"
     createdAt: "2007-08-29 15:14:29"
     name: "The Only Children: Paisley T-Shirt"
     image: "/t/h/the-only-children-paisley-t-shirt.jpg"
@@ -833,7 +833,7 @@ MacFJA\DoctrineTestSet\Ecommerce\Entity\Product:
     id: 126
     ean: 4723190287802
     price: 13.5000
-    description: "<ul>\r\n<ul class=\"disc\")\r\n<li> 6.1 oz. 100% preshrunk heavyweight cotton <br></li>\r\n<li> Shoulder-to-shoulder taping<br></li>\r\n<li>Double-needle sleeves and bottom hem<br></li>\r\n</ul>"
+    description: "\r\n<ul class=\"disc\">\r\n<li> 6.1 oz. 100% preshrunk heavyweight cotton <br></li>\r\n<li> Shoulder-to-shoulder taping<br></li>\r\n<li>Double-needle sleeves and bottom hem<br></li>\r\n</ul>"
     createdAt: "2007-08-29 15:31:56"
     name: "Zolof The Rock And Roll Destroyer: LOL Cat T-shirt"
     image: "/z/o/zolof-the-rock-and-roll-destroyer-lol-cat-t-shirt.jpg"
@@ -1147,3 +1147,36 @@ MacFJA\DoctrineTestSet\Ecommerce\Entity\Product:
     name: "HTC Touch Diamond"
     image: "/h/t/htc-touch-diamond.jpg"
     categories: [8]
+MacFJA\DoctrineTestSet\Ecommerce\Entity\Order:
+  -
+    incrementId: 1000012345
+    delivery:
+      date: "2012-06-14"
+      hour: "15:30:00"
+    purchaseAt: "2012-06-12 12:26:17"
+    billingAddress:
+      street: "9 Pipeclay Road"
+      city: "REDBANK"
+      state: "New South Wales"
+      zip: 2446
+      country: "Australia"
+    shipment:
+      cost: 23.98
+      transporter: "UPS Express"
+      address: ["9 Pipeclay Road",2446,"REDBANK","New South Wales","Australia"]
+MacFJA\DoctrineTestSet\Ecommerce\Entity\OrderItem:
+  -
+    productId: 3428042999868
+    orderId: 1000012345
+    quantity: 1
+    taxRate: 0.21
+  -
+    productId: 1289481708119
+    orderId: 1000012345
+    quantity: 1
+    taxRate: 0.21
+  -
+    productId: 2310629694081
+    orderId: 1000012345
+    quantity: 1
+    taxRate: 0.21

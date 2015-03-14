@@ -5,7 +5,10 @@ namespace MacFJA\DoctrineTestSet\Ecommerce;
 use Doctrine\Common\Persistence\ObjectManager;
 use MacFJA\DoctrineTestSet\Ecommerce\Entity\Category;
 use MacFJA\DoctrineTestSet\Ecommerce\Entity\Image;
+use MacFJA\DoctrineTestSet\Ecommerce\Entity\Order;
+use MacFJA\DoctrineTestSet\Ecommerce\Entity\OrderItem;
 use MacFJA\DoctrineTestSet\Ecommerce\Entity\Product;
+use MacFJA\DoctrineTestSet\Ecommerce\Model\Shipment;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
@@ -35,6 +38,11 @@ class FixtureLoader {
         $this->injectProductsData($data['MacFJA\DoctrineTestSet\Ecommerce\Entity\Product']);
         $this->clearTumbnails();
 
+        $this->injectOrderData(
+            $data['MacFJA\DoctrineTestSet\Ecommerce\Entity\Order'],
+            $data['MacFJA\DoctrineTestSet\Ecommerce\Entity\OrderItem']
+        );
+
         $this->manager->flush();
     }
 
@@ -61,6 +69,45 @@ class FixtureLoader {
             $category->setParent($parent);
             $this->manager->persist($category);
         }
+    }
+
+    protected function injectOrderData($ordersData, $orderItemData) {
+        //Create orders
+        foreach ($ordersData as $orderData) {
+            $order = new Order();
+            $order->setBillingAddress($orderData['billingAddress']);
+            $order->setDeliverySelected(new \DateTime($orderData['delivery']['date']));
+            $order->setPreferredDeliveryHour(new \DateTime($orderData['delivery']['hour']));
+            $order->setIncrementId($orderData['incrementId']);
+            $order->setPurchaseAt(new \DateTime($orderData['purchaseAt']));
+            $order->setOrderedItems($this->getOrderItemForIncrementId($orderItemData, $orderData['incrementId']));
+            $shipment = new Shipment();
+            $shipment->setAddress($orderData['shipment']['address']);
+            $shipment->setTransporter($orderData['shipment']['transporter']);
+            $shipment->setCost($orderData['shipment']['cost']);
+            $order->setShipping($shipment);
+            $this->manager->persist($order);
+        }
+        $this->manager->flush();
+    }
+
+    protected function getOrderItemForIncrementId($data, $incrementId) {
+        $items = array();
+        foreach ($data as $itemData) {
+            if($itemData['orderId'] == $incrementId) {
+                $item = new OrderItem();
+                $item->setQuantity($itemData['quantity']);
+                $item->setTaxRate($itemData['taxRate']);
+                $item->setProduct($this->getProductWithEan($itemData['productId']));
+                $this->manager->persist($item);
+                $items[] = $item;
+            }
+        }
+        return $items;
+    }
+
+    protected function getProductWithEan($ean) {
+        return $this->manager->getRepository('MacFJA\DoctrineTestSet\Ecommerce\Entity\Product')->findOneBy(array('ean' => $ean));
     }
 
     protected function injectProductsData($data) {
